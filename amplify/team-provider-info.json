@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-itsap-dev-1c59e-authRole",
+      "UnauthRoleArn": "arn:aws:iam::241533118660:role/amplify-itsap-dev-1c59e-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::241533118660:role/amplify-itsap-dev-1c59e-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-itsap-dev-1c59e-deployment",
+      "UnauthRoleName": "amplify-itsap-dev-1c59e-unauthRole",
+      "StackName": "amplify-itsap-dev-1c59e",
+      "StackId": "arn:aws:cloudformation:us-east-1:241533118660:stack/amplify-itsap-dev-1c59e/f194e950-9b03-11ef-a006-129b09dd5921",
+      "AmplifyAppId": "d1o8ltbij5nbzd"
+    },
+    "categories": {
+      "auth": {
+        "itsap0ab842dd": {}
+      }
+    }
+  }
+}
