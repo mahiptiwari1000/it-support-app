@@ -1,7 +1,7 @@
 import localFont from "next/font/local";
 import "./globals.css";
 import { Amplify } from 'aws-amplify';
-import awsmobile from '../aws-exports.js'; // e.g., '../amplify-config.json' or '../src/aws-exports.js'
+import awsmobile from '../src/aws-exports.js';
 
 // Configure Amplify once at the top level
 Amplify.configure(awsmobile);
