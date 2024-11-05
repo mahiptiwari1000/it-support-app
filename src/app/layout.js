@@ -1,7 +1,9 @@
 import localFont from "next/font/local";
 import "./globals.css";
 import { Amplify } from 'aws-amplify';
+import awsmobile from '../aws-exports.js';
 
+Amplify.configure(awsmobile);
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
