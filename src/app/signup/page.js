@@ -29,6 +29,8 @@ const SignupPage = () => {
     }
   };
 
+  console.log(username,password,email);
+
   return (
     <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 relative">
       <div className="w-full max-w-md bg-opacity-90 bg-gray-800 p-10 rounded-xl shadow-xl border border-gray-700 backdrop-blur-md">

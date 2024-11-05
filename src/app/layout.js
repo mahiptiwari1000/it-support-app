@@ -3,7 +3,16 @@ import "./globals.css";
 import { Amplify } from 'aws-amplify';
 import awsmobile from '../aws-exports.js';
 
-Amplify.configure(awsmobile);
+//Amplify.configure(awsmobile);
+
+Amplify.configure({
+  Auth: {
+    Cognito: {
+      userPoolClientId: '69ciph84eapoafm8tu1sebfm38',
+      userPoolId: 'us-east-1_1H5lUh7Af'
+    }
+  }
+});
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
