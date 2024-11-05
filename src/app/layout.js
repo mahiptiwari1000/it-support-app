@@ -8,11 +8,13 @@ import awsmobile from '../aws-exports.js';
 Amplify.configure({
   Auth: {
     Cognito: {
-      userPoolClientId: '69ciph84eapoafm8tu1sebfm38',
-      userPoolId: 'us-east-1_1H5lUh7Af'
+      identityPoolId: 'us-east-1:bb82e961-df6d-4d7c-a5e3-16e674f1dc47', //REQUIRED - Amazon Cognito Identity Pool ID
+        region: 'us-east-1', // REQUIRED - Amazon Cognito Region
+        userPoolId: 'us-east-1_1H5lUh7Af', //OPTIONAL - Amazon Cognito User Pool ID
+        userPoolWebClientId:'69ciph84eapoafm8tu1sebfm38'
+      }
     }
-  }
-});
+  });
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
