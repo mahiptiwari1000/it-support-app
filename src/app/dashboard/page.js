@@ -1,12 +1,21 @@
 "use client";
 
 import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
 import { signOut } from 'aws-amplify/auth';
-import { useState, useEffect } from 'react';
 
 const Dashboard = () => {
   const router = useRouter();
-  const [user, setUser] = useState(null);
+  const [tickets, setTickets] = useState([
+    {
+      id: 1,
+      priority: 'High',
+      severity: 'Critical',
+      summary: 'Network outage on 5th floor',
+      contact: 'John Doe - johndoe@example.com',
+    },
+    // Add more tickets as needed
+  ]);
 
   const handleSignOut = async () => {
     try {
@@ -17,21 +26,34 @@ const Dashboard = () => {
     }
   };
 
-  useEffect(() => {
-    // Simulate fetching the authenticated user's information
-    setUser({ username: 'InvincibleUser' }); // Replace with actual user data retrieval logic
-  }, []);
+  const openTicket = (ticketId) => {
+    router.push(`/ticket/${ticketId}`);
+  };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 relative">
-      <div className="w-full max-w-md bg-opacity-90 bg-gray-800 p-10 rounded-xl shadow-xl border border-gray-700 backdrop-blur-md text-center">
-        <div className="text-5xl text-orange-500 mb-4">⚡</div>
-        <h2 className="text-3xl font-semibold text-orange-500 mb-4">Welcome, {user?.username || 'User'}!</h2>
-        <p className="text-gray-400 mb-8">You are now on the Dashboard.</p>
+    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900">
+      <div className="w-full max-w-4xl p-10 bg-gray-800 rounded-xl shadow-xl border border-gray-700">
+        <h2 className="text-3xl font-semibold text-orange-500 mb-8 text-center">Ticket Dashboard</h2>
+
+        <div className="space-y-4">
+          {tickets.map((ticket) => (
+            <div key={ticket.id} className="p-4 bg-gray-700 rounded-lg shadow-sm">
+              <h3 className="text-xl font-semibold text-orange-500">{ticket.summary}</h3>
+              <p className="text-gray-400">Priority: {ticket.priority} | Severity: {ticket.severity}</p>
+              <p className="text-gray-400">Requestor Contact: {ticket.contact}</p>
+              <button
+                onClick={() => openTicket(ticket.id)}
+                className="mt-2 text-sm font-semibold text-blue-500 hover:text-blue-300 transition duration-150"
+              >
+                View Details
+              </button>
+            </div>
+          ))}
+        </div>
 
         <button
           onClick={handleSignOut}
-          className="w-full py-3 bg-orange-500 text-white text-lg font-semibold rounded-lg hover:bg-orange-600 transition duration-200"
+          className="w-full mt-8 py-3 bg-orange-500 text-white text-lg font-semibold rounded-lg hover:bg-orange-600 transition duration-200"
         >
           Sign Out
         </button>
