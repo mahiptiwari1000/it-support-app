@@ -12,6 +12,7 @@ export default function Home() {
           <li><Link href="/login">Login</Link></li>
           <li><Link href="/dashboard">Dashboard</Link></li>
           <li><Link href="/ticketdetails">Ticket Detail</Link></li>
+          <li><Link href="/ticketOverview">Ticket Overview</Link></li>
         </ul>
       </nav>
       <p>This app allows you to sign up, log in, and access a secure dashboard.</p>
