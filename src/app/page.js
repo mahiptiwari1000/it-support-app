@@ -11,7 +11,7 @@ export default function Home() {
           <li><Link href="/signup">Sign Up</Link></li>
           <li><Link href="/login">Login</Link></li>
           <li><Link href="/dashboard">Dashboard</Link></li>
-          <li><Link href="/ticketdetails">Ticket Detail</Link></li>
+          <li><Link href="/ticketdetail">Ticket Detail</Link></li>
           <li><Link href="/ticketOverview">Ticket Overview</Link></li>
         </ul>
       </nav>
