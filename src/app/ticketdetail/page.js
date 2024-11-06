@@ -3,7 +3,6 @@
 import { useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
-import AISummary from '../component/AISummary';
 
 const TicketDetail = () => {
   const router = useRouter();
@@ -28,33 +27,6 @@ const TicketDetail = () => {
     ],
   });
   const [newMessage, setNewMessage] = useState('');
-
-  // Fetch suggested response from API route
-  useEffect(() => {
-    async function fetchSuggestedResponse() {
-      try {
-        const res = await fetch('/api/suggestedResponse', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ issueDescription: ticket.description }),
-        });
-
-        const data = await res.json();
-        if (res.ok) {
-          setSuggestedResponse(data.suggestion);
-        } else {
-          console.error("Error:", data.error);
-          setSuggestedResponse("Please confirm that all network cables are securely connected on the affected floor. Check connections in the server room, including routers and switches. If issues persist, restart the affected hardware and run diagnostics on the network configuration.");
-        }
-      } catch (error) {
-        console.error("Error fetching suggested response:", error);
-        setSuggestedResponse("Please confirm that all network cables are securely connected on the affected floor. Check connections in the server room, including routers and switches. If issues persist, restart the affected hardware and run diagnostics on the network configuration.");
-      }
-    }
-    fetchSuggestedResponse();
-  }, [ticket.description]);
 
   const addLogEntry = (newStatus) => {
     const logEntry = { timestamp: new Date().toLocaleString(), description: `Status changed to "${newStatus}"` };
@@ -81,17 +53,11 @@ const TicketDetail = () => {
       <div className="w-full max-w-3xl p-10 bg-gray-800 rounded-xl shadow-xl border border-gray-700">
         <h2 className="text-3xl font-semibold text-orange-500 mb-8 text-center">Ticket Details</h2>
 
-        {/* AI Summary Feature */}
-        <AISummary description={ticket.description} />
         {/* Detail Description */}
         <h4 className="text-xl text-orange-500 mb-2">Issue Description</h4>
         <p className="text-gray-400 mb-6">{ticket.description}</p>
 
-        {/* Suggested Response */}
-        <div className="p-6 mb-8 bg-gray-900 border border-blue-500 rounded-lg shadow-lg">
-          <h3 className="text-2xl font-semibold text-blue-500 mb-2">AI Suggested Response</h3>
-          <p className="text-gray-400">{suggestedResponse || 'Loading suggested response...'}</p>
-        </div>
+        
 
         {/* Current Status Dropdown */}
         <h4 className="text-xl text-orange-500 mb-2">Current Status</h4>
